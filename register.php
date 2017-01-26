@@ -6,11 +6,11 @@ session_start();
 $signup_username_error = $signup_contact_error = $signup_password_error = $signup_email_error = "";
 if(isset($_POST['username'])&&isset($_POST['email'])&&isset($_POST['password'])){
 	$username = trim(mysqli_real_escape_string($db,$_POST["username"]));
-	$Contact = trim(mysqli_real_escape_string($db, $_POST["contact"]));
+	//$Contact = trim(mysqli_real_escape_string($db, $_POST["contact"]));
 	$email = trim(mysqli_real_escape_string($db,$_POST['email']));
 	$password = trim(mysqli_real_escape_string($db,$_POST['password']));
 	$password2 = trim(mysqli_real_escape_string($db,$_POST['password2']));
-    if(!empty($username)&&!empty($password) && !empty($email) && !empty($Contact)){
+    if(!empty($username)&&!empty($password) && !empty($email) ){
             $signup=1;
             if(strlen($username)>10){
                 $signup_username_error = ' Username must be less than 10 characters.';
@@ -43,21 +43,31 @@ if(isset($_POST['username'])&&isset($_POST['email'])&&isset($_POST['password']))
 					{  //create user
 					$password = md5($password); // hash pashword before storing for secority purpose
 					$sql = "INSERT INTO users(username, email, password) VALUES('$username', '$email', '$password')";
-					mysqli_query($db, $sql);
-					echo "OK";
+					if(mysqli_query($db, $sql)){
+                        echo "OK";
 					$_SESSION['message'] = "You are now logged in" ;
 					$_SESSION['username'] = $username;
 					//header("location: home.php");  // redirect to home apge
+                    } else{
+                        echo 'error';
+                }
+					
 
 	               }
                    else
 					{
 					$_SESSION['message'] = "The two passwords do not match";
-
+                        echo 'not same password';
 					}
-		}
-		}
-	}
+		          }
+		  } else{
+                 echo 'invalid format';
+             }
+	} else{
+        echo 'empty';
+    }
+} else{
+    echo '1';
 }
 ?>
 
@@ -137,5 +147,22 @@ if(isset($_POST['username'])&&isset($_POST['email'])&&isset($_POST['password']))
 			 </div>
 		 </div>
 	 </div>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            function validateuser(){
+                var str = $(this).val();
+                var div = $(this).closest('div');
+                if(str.length>=6&&str.length<=20){
+                    $(div).find('p').text('ok');
+                    $(div).removeClass('has-error').addClass('has-success');
+                } else{
+                    $(div).find('p').text('Username should be 8-20 character long.');
+                    $(div).removeClass('valid').addClass('has-error');
+                }
+            }
+            $('#username').focus(validateuser).keyup(validateuser).blur(validateuser);
+        });
+    </script>
  </body>
  </html>

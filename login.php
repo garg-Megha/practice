@@ -12,20 +12,23 @@ if (isset($_POST['username'])&&isset($_POST['password'])){
 	if(!empty($username)&&!empty($password)){
 		$password = md5($password);  //remember we hashed password before storing last time
 	  $sql = "SELECT * FROM users WHERE username = '$username' AND password='$password'";
-	  $result = mysqli_query($db, $sql);
-	  if(mysqli_num_rows($result) == 1)
-	  {
-			$row = mysqli_fetch_array($result);
-		  $_SESSION['username'] = $username;
-			$_SESSION['id'] = $row['id'];
-
-		  $_SESSION['message'] = "you are now logged in";
-		  header("location: home.php");
-	  }
-	  else
-	  {
-		  $_SESSION['message'] = "Username/ password combination invalid";
-		}
+	  if($result = mysqli_query($db, $sql)){
+          if(mysqli_num_rows($result) == 1)
+          {
+                $row = mysqli_fetch_array($result);
+                $_SESSION['username'] = $username;
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['message'] = "you are now logged in";
+              header("location: home.php");
+          }
+          else
+          {
+                $_SESSION['message'] = "Username/ password combination invalid";
+            }
+    } else
+    {
+        $_SESSION['message'] = "Username/ password combination invalid";
+    }
 	} else {
 		$_SESSION['message'] = "Empty Field";
 	}
