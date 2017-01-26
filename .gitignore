@@ -1,7 +1,1 @@
-<<<<<<< HEAD
-/include/**
-**/connect.inc.php
-=======
-**/connect.inc.php
-/include/**
->>>>>>> 350ce640a7836577e9410e51e5e657a770a0c3ec
+/include/connect.inc.php
