@@ -45,18 +45,8 @@ body{
   padding-top: 10px;
 }
 #msg{
-	display: none;
+	display: block;
 }
-.callout.callout-info {
-    background-color: #f0f7fd;
-    border-color: #d0e3f0;
-}
-.callout {
-    margin: 0 0 20px 0;
-    padding: 15px 30px 15px 15px;
-    border-left: 5px solid #eee;
-}
-
 .box{
 	position: relative;
 	border-top: 2px solid #c1c1c1;
@@ -76,4 +66,21 @@ body{
 }
 .login-error{
 	color: #f56954;
+}
+.login-error .form-control{
+	border-color: #f56954 !important;
+	box-shadow: none;
+}
+.callout {
+    margin: 0 0 20px 0;
+    padding: 15px 30px 15px 15px;
+    border-left: 5px solid #eee;
+}
+.callout .callout-info{
+	background-color: #f0f7fd;
+	border-color: #d0e3f0;
+}
+.callout .callout-danger{
+	background-color: #fcf2f2;
+	border-color: #dFb5b4;
 }

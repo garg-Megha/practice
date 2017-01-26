@@ -93,12 +93,17 @@ if (isset($_POST['username'])&&isset($_POST['password'])){
 		<script src="js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 			$(document).ready(function () {
+				var callout = $('#msg');
 				var elem = $("<i class='fa fa-times-circle-o'></i>");
 				//$('#password').closest('div').find('label').prepend(elem);
 				if ($('#login').data('error')){
+					$(callout).addClass('callout-danger');
+					$(callout).find('p').text('hi');
 					var error = $(this).find('div:last');
 					$(error).find('label').prepend(elem);
 					$(error).addClass('login-error');
+				} else {
+
 				}
 			});
 		</script>
