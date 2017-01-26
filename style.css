@@ -1,0 +1,79 @@
+body{
+	padding:0px;
+	margin: 0px;
+}
+
+.header{
+	background-color: #1A3333;
+	color: white;
+	text-align: center;
+	top: 0px;
+	width: 100%;
+	padding: 5px;
+}
+
+/*form{
+	width: 40%;
+	padding: 30px;
+	border: 1px solid #cbcbcb;
+	margin: 5px auto;
+}*/
+.textInput{
+	margin-top:2px;
+	height: 28px;
+	border: 1px solid #5E6E66;
+	font-size: 16px;
+	padding: 1px;
+	width: 100%;
+}
+
+#error_msg{
+	width:50%;
+	margin: 5px auto;
+  height: 30psx;
+  border: 1px solid #FF0000;
+  background: #FFB9B8;
+  color: #FF0000;
+  text-align: center;
+  padding-top: 10px;
+}
+#message{
+	width:50%;
+	margin: 5px auto;
+  height: 30psx;
+  text-align: center;
+  padding-top: 10px;
+}
+#msg{
+	display: none;
+}
+.callout.callout-info {
+    background-color: #f0f7fd;
+    border-color: #d0e3f0;
+}
+.callout {
+    margin: 0 0 20px 0;
+    padding: 15px 30px 15px 15px;
+    border-left: 5px solid #eee;
+}
+
+.box{
+	position: relative;
+	border-top: 2px solid #c1c1c1;
+	border-radius: 3px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.form-box{
+	/*width: 360px;*/
+	margin: 90px auto 0 auto;
+}
+.box .box-body{
+	padding: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+.login-error{
+	color: #f56954;
+}
