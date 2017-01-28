@@ -154,11 +154,19 @@ if(isset($_POST['username'])&&isset($_POST['email'])&&isset($_POST['password']))
                 var str = $(this).val();
                 var div = $(this).closest('div');
                 if(str.length>=6&&str.length<=20){
-                    $(div).find('p').text('ok');
-                    $(div).removeClass('has-error').addClass('has-success');
+                    var result = false;
+                    $.get('checkuser.php?username='+str,function(data){
+                        if(data){
+                            $(div).find('p').text('Username is available.');
+                            $(div).removeClass('has-error').addClass('has-success');
+                        } else{
+                            $(div).find('p').text('Username already taken.');
+                            $(div).removeClass('has-success').addClass('has-error');
+                        }   
+                    });
                 } else{
                     $(div).find('p').text('Username should be 8-20 character long.');
-                    $(div).removeClass('valid').addClass('has-error');
+                    $(div).removeClass('has-success').addClass('has-error');
                 }
             }
             $('#username').focus(validateuser).keyup(validateuser).blur(validateuser);
