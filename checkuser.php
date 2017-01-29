@@ -7,12 +7,12 @@
         if($result = mysqli_query($db, $sql)){
             if($result = mysqli_query($db, $sql)){
                 if(mysqli_num_rows($result) >0){
-                    echo false;
+                    echo 'false';
                 } else{
-                    echo true;
+                    echo 'true';
                 }
             } else{
-                echo false;
+                echo 'false';
             }
         }
     }
