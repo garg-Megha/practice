@@ -107,32 +107,32 @@ if(isset($_POST['username'])&&isset($_POST['email'])&&isset($_POST['password']))
 				 <div class="row">
 					 <form id="signup" action="register.php" method="post">
 						 <div class="form-group">
-							 <label for="username" class="control-label" >Username</label>
+							 <label for="username" class="control-label" >Username <i class="fa "></i></label>
 							 <input id="username" name="username" class="form-control"  placeholder = "Username" type="text">
 						 </div>
 						 <div class="form-group">
-							 <label for="firstname" class="control-label" >Firstname</label>
+							 <label for="firstname" class="control-label" >Firstname <i class="fa "></i></label>
 							 <input id="firstname" name="firstname" class="form-control" placeholder = "Firstname" type="text">
 						 </div>
 						 <div class="form-group">
-							 <label for="lastname" class="control-label" >Lastname</label>
+							 <label for="lastname" class="control-label" >Lastname <i class="fa "></i></label>
 							 <input id="lastname" name="lastname" class="form-control" placeholder = "Lastname" type="text">
 						 </div>
 						 <div class="form-group">
-							 <label for="email" class="control-label" >Email</label>
+							 <label for="email" class="control-label" >Email <i class="fa "></i></label>
 							 <input id="email" name="email" class="form-control" placeholder = "Email" type="email">
 						 </div>
 						 <div class="form-group">
-							 <label for="password" class="control-label" >Password</label>
-							 <input id="password" name="password" class="form-control" placeholder = "Password" type="text">
+							 <label for="password" class="control-label" >Password <i class="fa "></i></label>
+							 <input id="password" name="password" class="form-control" placeholder = "Password" type="password">
 						 </div>
 						 <div class="form-group">
-							 <label for="password2" class="control-label" >Confirm Password</label>
-							 <input id="password2" name="password2" class="form-control" placeholder = "Confirm Password" type="text">
+							 <label for="password2" class="control-label" >Confirm Password <i class="fa "></i></label>
+							 <input id="password2" name="password2" class="form-control" placeholder = "Confirm Password" type="password">
 						 </div>
 						 <div class="form-group">
-							 <label for="contact" class="control-label" >Contact No</label>
-							 <input id="contact" name="contact" class="form-control" placeholder = "Contact No" type="text">
+							 <label for="contact" class="control-label" >Contact No <i class="fa "></i></label>
+							 <input id="contact" name="contact" class="form-control" placeholder = "Contact No" type="tel		">
 						 </div>
 						 <button id="submit" value="register" name="register_btn" type="submit"> Login</button>
 					 </form>
@@ -146,10 +146,14 @@ if(isset($_POST['username'])&&isset($_POST['email'])&&isset($_POST['password']))
         $(document).ready(function(){
 					$.validator.setDefaults({
 						highlight: function (element) {
-							$(element).closest('.form-group').addClass('has-error');
+							var formgroup = $(element).closest('.form-group');
+							$(formgroup).addClass('has-error');
+							$(formgroup).find('i').removeClass('fa-check-circle').addClass('fa-times-circle-o');
 						},
 						unhighlight: function (element) {
-							$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+							var formgroup = $(element).closest('.form-group');
+							$(formgroup).removeClass('has-error').addClass('has-success');
+							$(formgroup).find('i').removeClass('fa-times-circle-o').addClass('fa-check-circle');
 						}
 					});
 					$.validator.addMethod('checkuser',function(value,element){
