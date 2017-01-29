@@ -1,4 +1,4 @@
-<?php
+<?php 
 //connect to database
 require 'include/connect.inc.php';
 if(!$db)
@@ -13,15 +13,16 @@ if(isset($_POST['submit'])){
 	$Relative_name = mysqli_real_escape_string($db,$_POST["Relative_name"]);
 	$relation = mysqli_real_escape_string($db,$_POST["relation"]);
 	$discription =mysqli_real_escape_string($db,$_POST["discription"]);
-
-
+	
+	
     $sql = "INSERT INTO patients (patient_name , patient_age, blood_group, emergency, Relative_name, relation, discription)
 	VALUES ('$patient_name' , '$patient_age', '$blood_group', '$emergency',  '$Relative_name', '$relation', '$discription')";
      mysqli_query($db, $sql);
-
-
+	 header("location: start.php"); //redirect to start.php
+	
+	
 	}
-
+	
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@ if(isset($_POST['submit'])){
 	 <div class="header">
 	 <h1> Patient Details</h1>
 	 </div>
-
+	 
 <body>
 <form action="detail.php" method="post">
 <table>
@@ -49,17 +50,31 @@ if(isset($_POST['submit'])){
 
 <tr>
 <td>Blood group:</td>
-<td><input type="text" name="blood_group" class ="textInput"></td>
+<td><input list="blood_group" name="blood_group">
+<datalist id="blood_group">
+<option value="A+">
+<option value="B+">
+<option value="O+">
+<option value="AB+">
+<option value="A-">
+<option value="B-">
+<option value="O-">
+<option value="AB-">
+</datalist>
+</td>
 </tr>
 
 <tr>
 <td>Type of Emergency: </td>
 <td>
-<select name="emergency">
-<option value="chest">Chest</option>
-<option value="urgent">Urgent</option>
-<option value="asthama">Asthama</option>
-</td>
+<input list="emergency" name="emergency">
+<datalist id="emergency">
+<option value="chest">
+<option value="urgent">
+<option value="asthama">
+<option value="accident">
+</datalist>
+</td
 </tr>
 
 <tr>
